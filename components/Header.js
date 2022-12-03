@@ -5,8 +5,6 @@ import { useRouter } from 'next/router'
 import { modalState } from "../atoms/modalAtoms";
 import { useRecoilState } from 'recoil'
 
-
-
 function Header () {
     const {data: session } = useSession();
     const router = useRouter();

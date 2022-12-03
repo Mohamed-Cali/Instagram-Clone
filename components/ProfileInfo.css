@@ -1,0 +1,15 @@
+.left_info {
+    justify-content:center;
+}
+
+.right_info > p {
+    border-top: 1px;
+   font-weight: 600;
+}
+
+p {
+    display: inline-block;
+}
+h4 { 
+    display: inline-block;
+}
