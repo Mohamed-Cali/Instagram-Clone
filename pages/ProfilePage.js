@@ -1,12 +1,24 @@
+import { useSession } from 'next-auth/react'
 import React from 'react'
-import Header from '../components/Header'
+
 import ProfileInfo from '../components/ProfileInfo'
+import Header from '../components/Header';
+
+import Photos from '../components/Photos';
 
 function ProfilePage() {
+    const { data: session } = useSession();
+
+    console.log(session)
   return (
-    <div>
+    <div className='flex flex-col content-center bg-gray-50 h-screen overflow-y-scroll scrollbar-hide '>
         <Header />
-        <ProfileInfo />
+        {session ? (
+        <div className='self-center'>
+          <ProfileInfo />
+          <Photos />
+        </div>
+        ): null}
     </div>
   )
 }
