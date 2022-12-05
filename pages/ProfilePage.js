@@ -11,7 +11,7 @@ function ProfilePage() {
 
     console.log(session)
   return (
-    <div className='flex flex-col content-center bg-gray-50 h-screen overflow-y-scroll scrollbar-hide '>
+    <div className='flex flex-col content-center bg-gray-100 h-screen overflow-y-scroll scrollbar-hide '>
         <Header />
         {session ? (
         <div className='self-center'>
