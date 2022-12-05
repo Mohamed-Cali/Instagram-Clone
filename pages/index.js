@@ -4,7 +4,7 @@ import Home from './Home'
 import ProfilePage from './ProfilePage';
 
 function index() {
-    const { data: session } = useSession();
+ 
 
   return (
     <div>
