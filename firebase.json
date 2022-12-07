@@ -1,6 +1,7 @@
 {
   "hosting": {
-    "public": "build",
+    "public": "public",
+    "site": "https://insta-2-66019.web.app/",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -9,8 +10,12 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "function": "nextServer"
       }
     ]
+  },
+  "functions": {
+    "source": ".",
+    "runtime": "nodejs12"
   }
 }

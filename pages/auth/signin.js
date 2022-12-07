@@ -3,9 +3,8 @@ import Header from '../../components/Header';
 
 
 
-
 function signIn({ providers }) {
-
+    console.time()
     return (
         <>
             
@@ -41,6 +40,8 @@ function signIn({ providers }) {
         </>
     )
   }
+
+
   
 export async function getServerSideProps() {
     const providers = await getProviders();
