@@ -4,7 +4,7 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { modalState } from "../atoms/modalAtoms";
 import { useRecoilState } from 'recoil'
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
 
@@ -14,6 +14,26 @@ function Header () {
     const router = useRouter();
     const [open, setOpen] = useRecoilState(modalState);
     const [showPopUp, setShowPopUp] = useState(false)
+
+    let ref = useRef();
+
+    useEffect(() => {
+        let handler = (e)=>{
+          if(!ref?.current?.contains(e.target)){
+            setShowPopUp(false);
+            console.log(ref.current);
+          }      
+        };
+    
+        document.addEventListener("mousedown", handler);
+        
+    
+        return() =>{
+          document.removeEventListener("mousedown", handler);
+        }
+    
+      });
+
 
     return (
         <div className="relative">
@@ -54,7 +74,7 @@ function Header () {
                     </div>
                     <div className="flex items-center justify-end space-x-4">
                         <HomeIcon onClick={() => router.push('/')} className="navBtn"/>
-                        <MenuIcon className="h-6 md:hidden cursor-pointer"/>
+                        <MenuIcon className="h-8 md:hidden cursor-pointer"/>
 
                     {session ? (
                         <>
@@ -66,11 +86,12 @@ function Header () {
                                     7
                                 </div>
                             </div>
-                            <PlusCircleIcon onClick={() => setOpen(true)} className="navBtn"/>
+                            <PlusCircleIcon onClick={() => setOpen(true)} className="h-8 cursor-pointer md:navBtn"/>
                             <UserGroupIcon className="navBtn"/>
                             <HeartIcon className="navBtn"/>
                             <img 
-                                onClick={() => setShowPopUp(true)}
+                                
+                                onClick={() => setShowPopUp(!showPopUp)}
                                 src={session.user.image}
                                 alt="Profile Pic"
                                 className="h-10 w-10 cursor-pointer rounded-full"
@@ -85,7 +106,8 @@ function Header () {
                 </div>
             </div>
             {showPopUp ? (
-                <div className="-mt-1 fixed shadow-md rounded-lg right-0 z-50 inline-block h-40 w-64 border border-white bg-white flex flex-col justify-between">
+                <div ref={ref} className="-mt-1 fixed shadow-md rounded-lg right-0 z-50 inline-block h-40 w-64 border
+                     border-white bg-white flex flex-col justify-between xl:mr-16 2xl:mr-52 ">
                     <div className="ml-3 mt-3 cursor-pointer">
                         <AccountCircleIcon />
                         <p onClick={() => router.push('/ProfilePage')} className="inline-block ml-3 text-lg">Profile</p>
