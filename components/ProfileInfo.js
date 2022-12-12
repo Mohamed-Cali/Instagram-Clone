@@ -7,20 +7,23 @@ function ProfileInfo() {
     const {data: session } = useSession();
   return (
     <div className='m-7 h-200 flex flex-col content-center max-w-5xl mx-5 lg:mx-auto"'>
-        <div className=''>
-            <div className='inline-block'>
+        <div >
+            <div className='flex flex-row  sm:inline-block '>
                 <img 
                     src={session?.user.image}
                     alt="Profile Pic"
-                    className="h-21 w-21 cursor-pointer rounded-full cursor-pointer"
+                    className="h-21 w-21 rounded-full cursor-pointer"
                 />
-            
-                <p className='mt-10 font-semibold text-xl'>{session?.user.name}</p>
+                <div className='align-top pl-5 sm:mt-10 font-semibold text-xl'>
+                <p >{session?.user.name}</p>
+                </div>
             </div>
-            <div className='inline-block align-top ml-2 '>
-                <h4 className='inline-block md:text-4xl sm:text-2xl'>{session?.user.email}</h4>
-                <SettingsIcon className='text-4xl ml-5 -mt-3 cursor-pointer'/>
-                <p className='h-10 w-80 mt-5 border border-gray-500 text-center font-medium text-xl pt-1 cursor-pointer'>Edit profile</p>
+            <div className='hidden sm:inline-block align-top ml-2 '>
+                <h4 className='hidden sm:inline-block md:text-3xl sm:text-2xl'>{session?.user.email}</h4>
+                <div className='hidden sm:inline-block text-4xl ml-5 cursor-pointer'>
+                    <SettingsIcon className='mt-1 md:mt-0'/>
+                </div>
+                <p className='sm:h-10 w-80 mt-5 border border-gray-500 text-center font-medium text-xl pt-1 cursor-pointer'>Edit profile</p>
                 
             </div>
         </div>

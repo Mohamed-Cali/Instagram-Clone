@@ -4,7 +4,7 @@ import Header from '../../components/Header';
 
 
 function signIn({ providers }) {
-    console.time()
+    
     return (
         <>
             
