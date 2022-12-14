@@ -99,7 +99,7 @@ function Header () {
                             
                         </>
                     ): (
-                        <button onClick={() => router.push('/auth/signin?callbackUrl')}>Sign In</button>
+                        <button onClick={() => router.push('/login')}>Sign In</button>
                     )}
                     </div>
                     
