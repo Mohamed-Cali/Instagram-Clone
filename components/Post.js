@@ -24,6 +24,7 @@ import {
 } from "@firebase/firestore";
 import { db, storage } from "../firebase";
 import Moment from "react-moment"
+import { useRouter } from "next/router";
 
 
 function Post({ id, username, userImg, img, caption }) {
@@ -32,6 +33,7 @@ function Post({ id, username, userImg, img, caption }) {
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
+  const router = useRouter();
 
   
 
@@ -86,9 +88,10 @@ function Post({ id, username, userImg, img, caption }) {
             {/* Header */}    
             <div className="flex items-center p-5">
                 <img src={userImg} className="rounded-full h-12 w-12 object-contain
-                border p-1 mr-3" alt="" 
+                border p-1 mr-3 cursor-pointer" alt="" 
+                onClick={() => router.push('/ProfilePage')}
                 />
-                <p className='flex-1 font-bold'>{username}</p>
+                <p className='flex-1 font-bold cursor-pointer' onClick={() => router.push('/ProfilePage')}>{username}</p>
                 <DotsHorizontalIcon className='h-5'/>
             </div>
             
