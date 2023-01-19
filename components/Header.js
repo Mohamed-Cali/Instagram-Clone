@@ -76,7 +76,9 @@ function Header () {
                         <HomeIcon onClick={() => router.push('/')} className="navBtn"/>
                         <MenuIcon className="h-8 md:hidden cursor-pointer"/>
 
-                    {session ? (
+                    {!session ? (
+                        <button onClick={() => router.push('/auth/signin?callbackUrl')}>Sign In</button>
+                    ):(
                         <>
                             <div className="relative navBtn">
                                 <PaperAirplaneIcon className="navBtn rotate-45"/>
@@ -98,8 +100,6 @@ function Header () {
                             />
                             
                         </>
-                    ): (
-                        <button onClick={() => router.push('/auth/signin?callbackUrl')}>Sign In</button>
                     )}
                     </div>
                     
